@@ -1,0 +1,13 @@
+{
+  "name": "Travel Itinerary App",
+  "short_name": "Itinerary",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "Plan and manage your travels.",
+  "icons": [{
+    "src": "icon.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }]
+}

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turkey Trip Itinerary & Budget</title>
+<style>
+  /* --- General Styles --- */
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 10px 10px 40px 10px;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  h1 { color: #333; }
+  h2 { color: #558b2f; } /* Dark Green for Headers */
+
+  /* --- Itinerary Accordion Styles (Blue) --- */
+  .itinerary-header {
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .day-content {
+    display: none;
+    padding: 0 10px;
+  }
+  .itinerary-header .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    transition: transform 0.3s;
+  }
+  .itinerary-header.active .arrow { transform: rotate(-135deg); }
+
+  /* --- Budget Accordion Styles (Green) --- */
+   .budget-header {
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: #84cc16; /* Lime Green */
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .budget-header .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    transition: transform 0.3s;
+  }
+  .budget-header.active .arrow { transform: rotate(-135deg); }
+
+  /* --- Budget Table Styles --- */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  .budget-table th, .budget-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  .budget-table th {
+    background-color: #f0fdf4; /* Very Light Green */
+    font-weight: bold;
+  }
+  .budget-table input[type="text"] {
+    width: 95%;
+    padding: 5px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;
+  }
+  .budget-table input[type="number"] {
+    width: 85%;
+    padding: 5px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;
+  }
+  .budget-table input::-webkit-outer-spin-button,
+  .budget-table input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .budget-table input[type="number"] { -moz-appearance: textfield; }
+  
+  .add-expense-btn {
+    display: block;
+    margin: 10px 0 5px 0;
+    padding: 8px 12px;
+    background-color: #4d7c0f; /* Darker Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .total-row {
+    font-weight: bold;
+    background-color: #f7fee7; /* Light Green */
+  }
+  .grand-total {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #65a30d; /* Darker Main Green */
+    color: white;
+    border-radius: 8px;
+    font-size: 1.1em;
+  }
+  .grand-total div { margin-bottom: 5px; }
+  .grand-total div:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>My Turkey Itinerary</h1>
+
+  <div class="day">
+    <div class="itinerary-header">Day 1: 10/23 Thu - Arrival in Istanbul <span class="arrow"></span></div>
+    <div class="day-content">
+      <p><strong>Flights:</strong> 00:30 TPE(T2) - 05:15 DXB(T3) / 10:40 DXB(T3) - 14:25 IST</p>
+      <p><strong>Accommodation:</strong> Chambers of the Boheme</p>
+      <p><strong>Plan:</strong></p>
+      <ul>
+        <li>Arrive at IST, exchange currency, and buy a transportation card.</li>
+        <li>Take M11-M2 metro to the hotel.</li>
+        <li>Explore the New District for dinner.</li>
+        <li><strong>Food Options:</strong> Hafız Mustafa 1864 (24hrs), MADO TAKSİM MEYDAN (7am-2am).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="itinerary-header">Day 2: 10/24 Fri - Istanbul: Old & Asian Districts <span class="arrow"></span></div>
+    <div class="day-content">
+      <p><strong>ePass Istanbul Day</strong></p>
+      <p><strong>Plan:</strong></p>
+      <ul>
+        <li><strong>Breakfast:</strong> Beşiktaş breakfast street - Sa Va Anatolian Breakfast House (from 6am).</li>
+        <li><strong>09:00:</strong> Topkapi Palace Museum (ePass, open 9:00-18:00).</li>
+        <li><strong>12:00:</strong> Grand Bazaar (ePass guided tour).</li>
+        <li>Spice Bazaar (ePass).</li>
+        <li><strong>17:00:</strong> Bosphorus Cruise Tour with Audio Guide (ePass).</li>
+        <li>Dinner.</li>
+      </ul>
+    </div>
+  </div>
+  
+    <div class="day">
+    <div class="itinerary-header">Day 3: 10/25 Sat - Istanbul: Old City Highlights <span class="arrow"></span></div>
+    <div class="day-content">
+      <p><strong>ePass Istanbul Day</strong></p>
+      <p><strong>Plan:</strong></p>
+      <ul>
+        <li><strong>Breakfast:</strong> Van Kahvaltı Evi (from 7:30am).</li>
+        <li><strong>09:00:</strong> The Blue Mosque (ePass guided tour, open 8:00-18:00).</li>
+        <li><strong>12:00:</strong> Basilica Cistern.</li>
+        <li><strong>16:00:</strong> Hagia Sophia Grand Mosque (ePass guided tour).</li>
+        <li><strong>19:00:</strong> Whirling Dervishes (ePass).</li>
+      </ul>
+    </div>
+  </div>
+
+    <div class="day">
+    <div class="itinerary-header">Day 4: 10/26 Sun - Istanbul to Cappadocia <span class="arrow"></span></div>
+    <div class="day-content">
+      <p><strong>Flight:</strong> 19:35-20:55 to Cappadocia (Booked)</p>
+      <p><strong>Accommodation:</strong> Logos Cave Cappadocia</p>
+      <p><strong>Plan:</strong></p>
+      <ul>
+        <li><strong>Breakfast:</strong> Limon Kahvaltı Evi or Well Breakfast & Coffee (from 8am).</li>
+        <li>Dolmabahçe Palace & Taksim Square.</li>
+        <li>Galata Tower (ePass, open 08:30 - 22:30).</li>
+        <li><strong>~16:30:</strong> Head to the airport.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="itinerary-header">Day 5: 10/27 Mon - Cappadocia <span class="arrow"></span></div>
+    <div class="day-content">
+        <p><strong>Plan:</strong></p>
+        <ul>
+            <li>Morning Hot Air Balloon tour.</li>
+            <li>Green Line Tour.</li>
+            <li>Watch the evening balloons at sunset.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="itinerary-header">Day 6: 10/28 Tue - Cappadocia <span class="arrow"></span></div>
+    <div class="day-content">
+        <p><strong>Plan:</strong></p>
+        <ul>
+            <li>Watch the morning hot air balloons.</li>
+            <li>Göreme Open Air Museum.</li>
+            <li>Wander through Göreme town.</li>
+            <li>Visit Göreme Panorama Viewpoint.</li>
+            <li>Sunset Horse Riding tour.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="itinerary-header">Day 7: 10/29 Wed - Cappadocia to Pamukkale <span class="arrow"></span></div>
+    <div class="day-content">
+        <p><strong>Plan:</strong></p>
+        <ul>
+            <li>Red Line Tour.</li>
+            <li>Take an overnight bus to Denizli/Pamukkale (to be booked).</li>
+        </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="itinerary-header">Day 8: 10/30 Thu - Pamukkale & Izmir <span class="arrow"></span></div>
+    <div class="day-content">
+        <p><strong>Accommodation:</strong> OGLAKCIOGLU PARK HOTEL</p>
+        <p><strong>Plan:</strong></p>
+        <ul>
+            <li>Arrive in Denizli. Take dolmus (minibus) from Denizli Otogarı Platform 76 to Pamukkale.</li>
+            <li>Explore Pamukkale (Cotton Castle).</li>
+            <li>Take the train from Denizli to Izmir.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="itinerary-header">Day 9: 10/31 Fri - Izmir <span class="arrow"></span></div>
+    <div class="day-content">
+        <p><strong>Plan:</strong></p>
+        <ul>
+            <li>Ephesus Archaeological Site Day Tour.</li>
+            <li><strong>Local Foods to Try:</strong> Boyoz, Kumru, Midye Dolma.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="itinerary-header">Day 10: 11/1 Sat - Izmir to Istanbul <span class="arrow"></span></div>
+    <div class="day-content">
+        <p><strong>Accommodation:</strong> Wabi Hostel</p>
+        <p><strong>Plan:</strong></p>
+        <ul>
+            <li>Explore Izmir city: Clock Tower, Konak Square, Asansör, Kemeraltı Bazaar.</li>
+            <li>Take the Izban train to the airport for your flight to Istanbul.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="itinerary-header">Day 11: 11/2 Sun - Last Day in Istanbul <span class="arrow"></span></div>
+    <div class="day-content">
+        <p><strong>Flight:</strong> 20:05 IST Departure</p>
+        <p><strong>Plan:</strong></p>
+        <ul>
+            <li>Feriköy Antika Pazarı (Flea Market, 9am-6pm).</li>
+            <li>Egyptian/Spice Market (Mısır Çarşısı).</li>
+            <li>Last minute souvenir shopping.</li>
+            <li>(Optional) Ferry to Asian side or explore Balat/Fener districts.</li>
+            <li><strong>~16:00:</strong> Leave for the airport (arrive ~17:00-17:30).</li>
+        </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="itinerary-header">Day 12: 11/3 Mon - Journey Home <span class="arrow"></span></div>
+    <div class="day-content">
+        <p><strong>Flights:</strong></p>
+        <ul>
+            <li>Depart IST - 01:20 DXB(T3)</li>
+            <li>Depart DXB(T3) - 03:40 TPE(T2)</li>
+            <li>Arrive TPE 15:35</li>
+        </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Trip Budget & Expenses</h2>
+
+  <div class="day" id="pre-trip-section">
+    <div class="budget-header active">Pre-Trip & Fixed Costs <span class="arrow"></span></div>
+    <div class="day-content" style="display: block;">
+      <table class="budget-table">
+        <thead><tr><th>Item</th><th>TRY (₺)</th><th>TWD (NT$)</th><th>EUR (€)</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><input type="text" placeholder="Flights (TPE-IST)"></td>
+            <td><input type="number" class="try-input" placeholder="0"></td>
+            <td><input type="number" class="twd-input" placeholder="0"></td>
+            <td><input type="number" class="eur-input" placeholder="0"></td>
+          </tr>
+        </tbody>
+        <tfoot><tr class="total-row"><td>Subtotal</td><td id="pre-trip-try-total">0.00</td><td id="pre-trip-twd-total">0.00</td><td id="pre-trip-eur-total">0.00</td></tr></tfoot>
+      </table>
+      <button class="add-expense-btn">Add Expense</button>
+    </div>
+  </div>
+
+  <script>
+    const cityMap = { 1: "Istanbul", 2: "Istanbul", 3: "Istanbul", 4: "Istanbul/Cappadocia", 5: "Cappadocia", 6: "Cappadocia", 7: "Cappadocia/Bus", 8: "Pamukkale/Izmir", 9: "Izmir", 10: "Izmir/Istanbul", 11: "Istanbul" };
+    for (let i = 1; i <= 11; i++) {
+        document.write(`
+        <div class="day" id="day${i}-section">
+          <div class="budget-header">Day ${i}: ${cityMap[i]} Expenses <span class="arrow"></span></div>
+          <div class="day-content">
+            <table class="budget-table">
+              <thead><tr><th>Item</th><th>TRY (₺)</th><th>TWD (NT$)</th><th>EUR (€)</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><input type="text" placeholder="e.g., Breakfast"></td>
+                  <td><input type="number" class="try-input" placeholder="0"></td>
+                  <td><input type="number" class="twd-input" placeholder="0"></td>
+                  <td><input type="number" class="eur-input" placeholder="0"></td>
+                </tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td>Daily Total</td><td id="day${i}-try-total">0.00</td><td id="day${i}-twd-total">0.00</td><td id="day${i}-eur-total">0.00</td></tr></tfoot>
+            </table>
+            <button class="add-expense-btn">Add Expense</button>
+          </div>
+        </div>
+      `);
+    }
+  </script>
+
+  <div class="grand-total">
+    <h3>Trip Grand Total</h3>
+    <div id="grand-total-try">Total TRY (₺): 0.00</div>
+    <div id="grand-total-twd">Total TWD (NT$): 0.00</div>
+    <div id="grand-total-eur">Total EUR (€): 0.00</div>
+  </div>
+
+</div>
+
+
+<script>
+// --- CORE FUNCTIONS ---
+function calculateAllTotals() {
+    let grandTotal = { try: 0, twd: 0, eur: 0 };
+
+    // --- Calculate Pre-trip total ---
+    const preTripTotals = calculateSectionTotal('#pre-trip-section');
+    document.getElementById('pre-trip-try-total').textContent = preTripTotals.try.toFixed(2);
+    document.getElementById('pre-trip-twd-total').textContent = preTripTotals.twd.toFixed(2);
+    document.getElementById('pre-trip-eur-total').textContent = preTripTotals.eur.toFixed(2);
+    grandTotal.try += preTripTotals.try;
+    grandTotal.twd += preTripTotals.twd;
+    grandTotal.eur += preTripTotals.eur;
+    
+    // --- Calculate daily totals ---
+    for (let i = 1; i <= 11; i++) {
+        const dailyTotals = calculateSectionTotal(`#day${i}-section`);
+        document.getElementById(`day${i}-try-total`).textContent = dailyTotals.try.toFixed(2);
+        document.getElementById(`day${i}-twd-total`).textContent = dailyTotals.twd.toFixed(2);
+        document.getElementById(`day${i}-eur-total`).textContent = dailyTotals.eur.toFixed(2);
+        grandTotal.try += dailyTotals.try;
+        grandTotal.twd += dailyTotals.twd;
+        grandTotal.eur += dailyTotals.eur;
+    }
+
+    // --- Update Grand Total Display ---
+    document.getElementById('grand-total-try').textContent = `Total TRY (₺): ${grandTotal.try.toFixed(2)}`;
+    document.getElementById('grand-total-twd').textContent = `Total TWD (NT$): ${grandTotal.twd.toFixed(2)}`;
+    document.getElementById('grand-total-eur').textContent = `Total EUR (€): ${grandTotal.eur.toFixed(2)}`;
+}
+
+function calculateSectionTotal(sectionSelector) {
+    const section = document.querySelector(sectionSelector);
+    let total = { try: 0, twd: 0, eur: 0 };
+    section.querySelectorAll('.try-input').forEach(input => total.try += parseFloat(input.value) || 0);
+    section.querySelectorAll('.twd-input').forEach(input => total.twd += parseFloat(input.value) || 0);
+    section.querySelectorAll('.eur-input').forEach(input => total.eur += parseFloat(input.value) || 0);
+    return total;
+}
+
+function addExpenseRow(button) {
+    const tableBody = button.previousElementSibling.querySelector('tbody');
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td><input type="text" placeholder="New item"></td>
+        <td><input type="number" class="try-input" placeholder="0"></td>
+        <td><input type="number" class="twd-input" placeholder="0"></td>
+        <td><input type="number" class="eur-input" placeholder="0"></td>
+    `;
+    // Add event listeners to the new inputs
+    newRow.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', calculateAllTotals);
+    });
+    tableBody.appendChild(newRow);
+}
+
+// --- EVENT LISTENERS ---
+function setupEventListeners() {
+    // Accordion functionality for all headers
+    document.querySelectorAll('.itinerary-header, .budget-header').forEach(header => {
+      header.addEventListener('click', () => {
+        header.classList.toggle('active');
+        const content = header.nextElementSibling;
+        content.style.display = content.style.display === "block" ? "none" : "block";
+      });
+    });
+
+    // "Add Expense" buttons
+    document.querySelectorAll('.add-expense-btn').forEach(btn => {
+        btn.addEventListener('click', () => addExpenseRow(btn));
+    });
+
+    // Initial inputs
+    document.querySelectorAll('.budget-table input').forEach(input => {
+        input.addEventListener('input', calculateAllTotals);
+    });
+}
+
+// --- INITIALIZATION ---
+document.addEventListener('DOMContentLoaded', () => {
+    setupEventListeners();
+    calculateAllTotals();
+});
+
+</script>
+
+</body>
+</html>
